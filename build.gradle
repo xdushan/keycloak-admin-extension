@@ -1,0 +1,23 @@
+plugins {
+  id 'java'
+}
+
+group = 'com.zyntaxmind'
+version = '0.0.1'
+sourceCompatibility = '17'
+
+repositories {
+  mavenCentral()
+  mavenLocal()
+}
+
+dependencies {
+  implementation group: 'org.keycloak', name: 'keycloak-core', version: '21.1.1'
+  compileOnly group: 'org.keycloak', name: 'keycloak-services', version: '21.1.1'
+  compileOnly group: 'org.keycloak', name: 'keycloak-server-spi-private', version: '21.1.1'
+  compileOnly group: 'org.keycloak', name: 'keycloak-server-spi', version: '21.1.1'
+  implementation group: 'org.keycloak', name: 'keycloak-model-jpa', version: '21.1.1'
+  implementation group: 'org.jboss.spec.javax.ws.rs', name: 'jboss-jaxrs-api_2.1_spec', version: '2.0.2.Final'
+  implementation group: 'org.hibernate.validator', name: 'hibernate-validator', version: '8.0.0.Final'
+  implementation "com.zyntaxmind:keycloak-admin-extension-model:1.0.0"
+}

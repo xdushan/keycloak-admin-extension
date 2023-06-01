@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="dush" id="user-address-1.0">
+
+        <createTable tableName="USER_ADDRESS">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="USER_ID" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ADDRESS_1" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="ADDRESS_2" type="VARCHAR(255)">
+            </column>
+            
+            <column name="CITY_ID" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="POSTAL_CODE" type="VARCHAR(8)">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="STATE" type="VARCHAR(45)">
+            </column>
+            
+            <column name="COUNTRY_ID" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="LONGITUDE" type="DOUBLE">
+            </column>
+            
+             <column name="LATITUDE" type="DOUBLE">
+            </column>
+        </createTable>
+
+        <addPrimaryKey
+            constraintName="PK_USER_ADDRESS"
+            tableName="USER_ADDRESS"
+            columnNames="ID"
+        />
+        
+        <addForeignKeyConstraint 
+        baseColumnNames="USER_ID" 
+        baseTableName="USER_ADDRESS" 
+        constraintName="FK_USER_ID_OF_USER_ADDRESS" 
+        referencedColumnNames="ID" 
+        referencedTableName="USER_ENTITY"
+        ></addForeignKeyConstraint>
+
+
+    </changeSet>
+        
+</databaseChangeLog>
+
