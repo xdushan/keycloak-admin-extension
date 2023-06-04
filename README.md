@@ -60,7 +60,7 @@ curl --location '${keycloak_host}/admin/realms/${realm}/ext/users/${user_id}/add
 
 PUT - update specific address for the user.
 ```
-curl --location '${keycloak_host}/admin/realms/${realm}/ext/users/${user_id}/addresses' \
+curl --location '${keycloak_host}/admin/realms/${realm}/ext/users/${user_id}/addresses'/${address_id} \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer ${access_token_with_admin_access}' \
 --data '{
