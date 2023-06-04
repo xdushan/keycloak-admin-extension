@@ -3,21 +3,29 @@ plugins {
 }
 
 group = 'com.zyntaxmind'
-version = '0.0.1'
+version = '1.0.0'
 sourceCompatibility = '17'
 
 repositories {
   mavenCentral()
-  mavenLocal()
+  maven {
+    url = uri("https://pkgs.dev.azure.com/zyntaxmind/open-libs/_packaging/open-feed/maven/v1")
+  }
+}
+
+ext {
+  set('keycloakVersion', "21.1.1")
 }
 
 dependencies {
-  implementation group: 'org.keycloak', name: 'keycloak-core', version: '21.1.1'
-  compileOnly group: 'org.keycloak', name: 'keycloak-services', version: '21.1.1'
-  compileOnly group: 'org.keycloak', name: 'keycloak-server-spi-private', version: '21.1.1'
-  compileOnly group: 'org.keycloak', name: 'keycloak-server-spi', version: '21.1.1'
-  implementation group: 'org.keycloak', name: 'keycloak-model-jpa', version: '21.1.1'
-  implementation group: 'org.jboss.spec.javax.ws.rs', name: 'jboss-jaxrs-api_2.1_spec', version: '2.0.2.Final'
-  implementation group: 'org.hibernate.validator', name: 'hibernate-validator', version: '8.0.0.Final'
+  implementation "org.keycloak:keycloak-core:${keycloakVersion}"
+  compileOnly "org.keycloak:keycloak-services:${keycloakVersion}"
+  compileOnly "org.keycloak:keycloak-server-spi-private:${keycloakVersion}"
+  compileOnly "org.keycloak:keycloak-server-spi:${keycloakVersion}"
+  implementation "org.keycloak:keycloak-model-jpa:${keycloakVersion}"
+ 
+  implementation 'org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.1_spec:2.0.2.Final'
+  implementation 'org.hibernate.validator:hibernate-validator:8.0.0.Final'
+  
   implementation "com.zyntaxmind:keycloak-admin-extension-model:1.0.0"
 }
