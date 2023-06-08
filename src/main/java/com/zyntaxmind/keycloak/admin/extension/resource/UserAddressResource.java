@@ -29,7 +29,7 @@ import org.jboss.resteasy.annotations.cache.NoCache;
 import org.keycloak.models.KeycloakSession;
 import org.keycloak.services.resources.admin.permissions.AdminPermissionEvaluator;
 import com.zyntaxmind.keycloak.admin.extension.model.representation.UserAddressRepresentation;
-import com.zyntaxmind.keycloak.admin.extension.service.UserAddressService;
+import com.zyntaxmind.keycloak.admin.extension.service.UserAddressProvider;
 import com.zyntaxmind.keycloak.admin.extension.util.AdminRealmExtensionUtil;
 
 /**
@@ -57,14 +57,14 @@ public class UserAddressResource {
   @Produces(MediaType.APPLICATION_JSON)
   public UserAddressRepresentation getUserAddress() {
     AdminRealmExtensionUtil.validateQueryAccesss(session, auth, userId);
-    return session.getProvider(UserAddressService.class).getUserAddress(this.id, this.userId);
+    return session.getProvider(UserAddressProvider.class).getUserAddress(this.id, this.userId);
   }
 
   @PUT
   @Consumes(MediaType.APPLICATION_JSON)
   public Response updateUserAddress(UserAddressRepresentation rep) {
     AdminRealmExtensionUtil.validateManageAccess(session, auth, userId);
-    session.getProvider(UserAddressService.class).updateUserAddress(rep, this.id, this.userId);
+    session.getProvider(UserAddressProvider.class).updateUserAddress(rep, this.id, this.userId);
     return Response.noContent().build();
   }
   
@@ -72,7 +72,7 @@ public class UserAddressResource {
   @NoCache
   public Response deleteUserAddress() {
     AdminRealmExtensionUtil.validateManageAccess(session, auth, userId);
-    session.getProvider(UserAddressService.class).deleteUserAddress(this.id, this.userId);
+    session.getProvider(UserAddressProvider.class).deleteUserAddress(this.id, this.userId);
     return Response.noContent().build();
   }
 }

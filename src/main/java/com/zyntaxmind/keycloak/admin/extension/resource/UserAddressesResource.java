@@ -30,7 +30,7 @@ import javax.ws.rs.core.Response;
 import org.keycloak.models.KeycloakSession;
 import org.keycloak.services.resources.admin.permissions.AdminPermissionEvaluator;
 import com.zyntaxmind.keycloak.admin.extension.model.representation.UserAddressRepresentation;
-import com.zyntaxmind.keycloak.admin.extension.service.UserAddressService;
+import com.zyntaxmind.keycloak.admin.extension.service.UserAddressProvider;
 import com.zyntaxmind.keycloak.admin.extension.util.AdminRealmExtensionUtil;
 
 /**
@@ -56,7 +56,7 @@ private final KeycloakSession session;
   @Produces(MediaType.APPLICATION_JSON)
   public List<UserAddressRepresentation> getUserAddresses() {
     AdminRealmExtensionUtil.validateQueryAccesss(session, auth, userId);
-    return session.getProvider(UserAddressService.class).getUserAddress(this.userId);
+    return session.getProvider(UserAddressProvider.class).getUserAddress(this.userId);
   }
   
   @POST
@@ -64,7 +64,7 @@ private final KeycloakSession session;
   @Consumes(MediaType.APPLICATION_JSON)
   public Response createUserAddress(UserAddressRepresentation rep) {
     AdminRealmExtensionUtil.validateCreateAccess(session, auth, userId);
-    final String id = session.getProvider(UserAddressService.class).saveUserAddress(rep, this.userId);
+    final String id = session.getProvider(UserAddressProvider.class).saveUserAddress(rep, this.userId);
     return Response.created(session.getContext().getUri().getAbsolutePathBuilder().path(id).build()).build();
   }
   

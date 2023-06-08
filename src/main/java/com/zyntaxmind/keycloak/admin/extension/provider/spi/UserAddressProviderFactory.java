@@ -19,12 +19,12 @@
 package com.zyntaxmind.keycloak.admin.extension.provider.spi;
 
 import org.keycloak.provider.ProviderFactory;
-import com.zyntaxmind.keycloak.admin.extension.service.UserAddressService;
+import com.zyntaxmind.keycloak.admin.extension.service.UserAddressProvider;
 
 /**
  * @author dush
  *
  */
-public interface UserAddressServiceProviderFactory extends ProviderFactory<UserAddressService>{
+public interface UserAddressProviderFactory extends ProviderFactory<UserAddressProvider>{
 
 }

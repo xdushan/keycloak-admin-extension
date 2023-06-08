@@ -21,18 +21,18 @@ package com.zyntaxmind.keycloak.admin.extension.provider.spi;
 import org.keycloak.Config.Scope;
 import org.keycloak.models.KeycloakSession;
 import org.keycloak.models.KeycloakSessionFactory;
-import com.zyntaxmind.keycloak.admin.extension.service.UserAddressService;
-import com.zyntaxmind.keycloak.admin.extension.service.UserAddressServiceImpl;
+import com.zyntaxmind.keycloak.admin.extension.service.UserAddressProvider;
+import com.zyntaxmind.keycloak.admin.extension.service.JpaUserAddressProvider;
 
 /**
  * @author dush
  *
  */
-public class UserAddressServiceProviderFactoryImpl implements UserAddressServiceProviderFactory {
+public class JpaUserAddressProviderFactory implements UserAddressProviderFactory {
 
   @Override
-  public UserAddressService create(KeycloakSession session) {
-    return new UserAddressServiceImpl(session);
+  public UserAddressProvider create(KeycloakSession session) {
+    return new JpaUserAddressProvider(session);
   }
 
   @Override
@@ -52,7 +52,7 @@ public class UserAddressServiceProviderFactoryImpl implements UserAddressService
 
   @Override
   public String getId() {
-    return "userAddressServiceImpl";
+    return "JpaUserAddressProvider";
   }
 
 }

@@ -21,8 +21,8 @@ package com.zyntaxmind.keycloak.admin.extension.spi;
 import org.keycloak.provider.Provider;
 import org.keycloak.provider.ProviderFactory;
 import org.keycloak.provider.Spi;
-import com.zyntaxmind.keycloak.admin.extension.provider.spi.UserAddressServiceProviderFactory;
-import com.zyntaxmind.keycloak.admin.extension.service.UserAddressService;
+import com.zyntaxmind.keycloak.admin.extension.provider.spi.UserAddressProviderFactory;
+import com.zyntaxmind.keycloak.admin.extension.service.UserAddressProvider;
 
 /**
  * @author dush
@@ -42,12 +42,12 @@ public class UserAddressSpi implements Spi {
 
   @Override
   public Class<? extends Provider> getProviderClass() {
-      return UserAddressService.class;
+      return UserAddressProvider.class;
   }
 
   @Override
   @SuppressWarnings("rawtypes")
   public Class<? extends ProviderFactory> getProviderFactoryClass() {
-      return UserAddressServiceProviderFactory.class;
+      return UserAddressProviderFactory.class;
   }
 }

@@ -15,4 +15,4 @@
 # limitations under the License.
 #
 
-com.zyntaxmind.keycloak.admin.extension.provider.spi.UserAddressServiceProviderFactoryImpl
+com.zyntaxmind.keycloak.admin.extension.provider.spi.JpaUserAddressProviderFactory

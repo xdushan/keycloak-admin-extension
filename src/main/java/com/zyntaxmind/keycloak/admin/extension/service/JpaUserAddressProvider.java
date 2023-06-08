@@ -35,11 +35,11 @@ import com.zyntaxmind.keycloak.admin.extension.model.representation.UserAddressR
  * @author dush
  *
  */
-public class UserAddressServiceImpl implements UserAddressService {
+public class JpaUserAddressProvider implements UserAddressProvider {
 
   private final KeycloakSession session;
 
-  public UserAddressServiceImpl(KeycloakSession session) {
+  public JpaUserAddressProvider(KeycloakSession session) {
     this.session = session;
   }
 

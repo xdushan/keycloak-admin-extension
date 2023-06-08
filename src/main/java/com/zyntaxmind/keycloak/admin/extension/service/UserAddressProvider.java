@@ -24,7 +24,7 @@ import com.zyntaxmind.keycloak.admin.extension.model.representation.UserAddressR
  * @author dush
  *
  */
-public interface UserAddressService extends Provider {
+public interface UserAddressProvider extends Provider {
 
   /***
    * 
